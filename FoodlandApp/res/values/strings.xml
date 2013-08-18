@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Foodland</string>
+    <string name="cargando">Cargando</string>
+    <string name="localizacion">Encontrando tu localización...</string>
+
+</resources>
