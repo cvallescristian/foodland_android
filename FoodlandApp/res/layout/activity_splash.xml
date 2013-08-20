@@ -2,26 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/splashback">
+    android:background="@drawable/splashback"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/foodlandlogo" />
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="12sp"
-        android:textColor="#454545"
-        android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:text="@string/cargando" />
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/cargando"
+        android:textColor="#454545"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/my_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="66dp" />
 
 </RelativeLayout>
