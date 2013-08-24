@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Foodland</string>
     <string name="hello_world">Hello world!</string>
+    <string name="titulo_producto">Yakuza Roll</string>
     <!-- From: file:/Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/src/main/res/values/styles.xml -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

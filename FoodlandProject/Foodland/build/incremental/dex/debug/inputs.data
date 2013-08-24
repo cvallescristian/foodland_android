@@ -1,16 +1,15 @@
 # incremental data. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1376978461000 437 3347f1942dde6e2be7d1aa863cfbe0cd84306e37 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$style.class
+1377327211000 437 08e8c12a2f2fd307c0ac6b735bf2dfc8ebbb50b5 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$style.class
 1376964160000 346 c84d5b7c2f4797d7637e92502b427f5d57c91fca /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$attr.class
-1376978461000 478 cc412abc3a845c4de20606d1aa3952873edc2706 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$string.class
+1377327211000 517 b4782c3464bbe174c9f5e3d38c120795bcc51314 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$string.class
 1376964160000 467 4bf5d395c30d8ded8c8a0a6fe1791b90032fe101 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$dimen.class
 1369432937000 490914 3fe75433da602500cc71fcc1c46e5550291dd45d /Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/13.0.0/support-v4-13.0.0.jar
-1376978461000 409 e3b49f07342d544c23e330c20043e4e6774d72eb /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$layout.class
+1377327211000 409 7ee074ba00d3054f6a30fdeb979553becd267a06 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$layout.class
 1376964160000 349 572fb60f4af8984736fbcdba303685f0070732a7 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/BuildConfig.class
-1376964160000 413 330e5c6fbabe9fd5ed9aa5b5f38d20f5f8fca89d /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$drawable.class
-1376978461000 1937 d158f76516f566ee46bfc1ad95ea91b234bd463b /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/MainActivity.class
-1376978461000 697 7d783db2f05e22ad58e57f86a40b4117b4d146a8 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R.class
-1376978461000 1564 ea0ec69131d159d086db5f13bb8e8f3a19605b04 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/MainActivity$1.class
-1376978461000 394 ac72486b386ac6c423b3f58ec4581b2532ee5c2f /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$menu.class
-1376978461000 522 748c1b962cf4fd717fff093d94458e8e90769a32 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$id.class
+1377327211000 476 5d9a9dd995a1cc154c81eb7bf6fb9778708de833 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$drawable.class
+1377327211000 821 edbdac934f2bc79eda7a10a98316d143e7ca9540 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/MainActivity.class
+1377327211000 697 34d495edfb5c78669c2a305180e0394c1201c16b /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R.class
+1377327211000 394 fac986679a46ac8516fc24c19225c004b65e4847 /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$menu.class
+1377327211000 600 f031c559a5ec737ccbd138162fb318f6b521318b /Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/build/classes/debug/cl/foodland/foodland/R$id.class

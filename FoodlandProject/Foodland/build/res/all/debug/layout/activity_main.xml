@@ -2,51 +2,119 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#c1c1c1">
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:gravity="center"
-            android:background="#c1c1c1"
-            android:layout_height="300dp">
+            android:layout_height="55dp"
+            android:background="#232328">
 
-        <EditText
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/input1"
+        <ImageView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageView2"
                 android:layout_gravity="center"
-                android:autoText="false"/>
+                android:background="@drawable/logo_fl"/>
 
+    </LinearLayout>
 
-        <EditText
-                android:layout_width="100dp"
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/input2"
-                android:layout_marginBottom="20dp"/>
+                android:id="@+id/imageView"
+                android:layout_gravity="center"
+                android:background="@drawable/imagen_1"
+                />
+    </LinearLayout>
 
-        <TextView
-                android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="esto es un label"
-                android:textColor="#252528"
-                android:id="@+id/resultado"/>
+                android:background="#ffffff">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Yakuza Roll"
+                    android:id="@+id/titulo_producto"
+                    android:textSize="24dp"
+                    android:padding="10dp"
+                    android:background="#ffffff"
+                    android:textStyle="bold"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Rolls envueltos en pescado agridulce y tempura, relleno: camarón, queso crema, palta"
+                    android:id="@+id/textView2"
+                    android:padding="10dp"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="$14990"
+                    android:id="@+id/textView"
+                    android:textSize="20dp"
+                    android:padding="10dp"
+                    android:background="#faa732"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center"
-            >
+            android:padding="10dp"
+            android:layout_marginTop="20dp">
 
-
-        <Button
-                android:layout_width="wrap_content"
+        <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Mostrar Contenido"
-                android:id="@+id/button"/>
+                android:gravity="center">
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Llamada al local"
+                    android:id="@+id/button"
+                    android:textStyle="normal"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:background="#C51517"
+                    android:textColor="#ffffff"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
+        </RelativeLayout>
+
     </LinearLayout>
+
 </LinearLayout>
 <!-- From: file:/Users/cristian/Desktop/foodland_android/FoodlandProject/Foodland/src/main/res/layout/activity_main.xml -->
