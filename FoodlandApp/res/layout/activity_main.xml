@@ -5,11 +5,11 @@
     android:layout_height="fill_parent"
     android:background="@drawable/pizz"
     android:orientation="vertical" >
-    
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="98dp" >
-</RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -24,7 +24,7 @@
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
             android:src="@drawable/black82" />
-        
+
         <ImageView
             android:id="@+id/titlelogo"
             android:layout_width="wrap_content"
@@ -35,7 +35,6 @@
             android:padding="12dp"
             android:scaleType="fitXY"
             android:src="@drawable/foodlandlogo" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -49,24 +48,23 @@
         android:layout_width="fill_parent"
         android:layout_height="583dp" >
 
-         <Button
-          android:id="@+id/button2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/button1"
-          android:layout_below="@+id/button1"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/busq_manual" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_below="@+id/button1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/busq_manual" />
 
-      <Button
-          android:id="@+id/button1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
-          android:layout_marginTop="47dp"
-          android:background="@drawable/faceb_login" />
-        
-        
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp"
+            android:background="@drawable/faceb_login"
+            android:onClick="buttonClick" />
     </RelativeLayout>
 
 </LinearLayout>
