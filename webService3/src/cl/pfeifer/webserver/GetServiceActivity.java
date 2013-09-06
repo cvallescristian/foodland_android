@@ -12,24 +12,34 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 
 public class GetServiceActivity extends Activity {
 
 	TextView tv;
 	Service service;
-	
-	
-	private static final String accionSoap = "http://190.54.87.101/foodland_test2/service.php/getproductbygps";
-	private static final String metodo = "getproductbygps";
-	private static final String namespace = "190.54.87.101/foodland_test2";
-	private static final String url = "http://190.54.87.101/foodland_test2/service.php"; 
 
+	private static final String accionSoap = "http://186.34.227.34/foodland_test2/service.php/getproductbygps";
+	private static final String metodo = "getproductbygps";
+	private static final String namespace = "186.34.227.34/foodland_test2";
+	private static final String url = "http://186.34.227.34/foodland_test2/service.php";
+
+	// parametros webserver
+	ArrayList<String> var = new ArrayList();
+	ArrayList<String> value = new ArrayList();
+
+	//string respuesta con los productos
+	String jsonString;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -37,27 +47,41 @@ public class GetServiceActivity extends Activity {
 		
 		//tv = (TextView) findViewById(R.id.text1);
 		
-		//parametros webserver
-		ArrayList<String> var = new ArrayList();
-		ArrayList<String> value = new ArrayList();
 		
 		//Lista de comida que se obtendra
-		ArrayList<Comida> arregloComida;
+		final ArrayList<Comida> arregloComida;
 		
 		
 		//GPS
-		var.add("latitud"); value.add("-33.5353543");
-		var.add("longitud"); value.add("-177.2313123");
+		GPSTracker gps = new GPSTracker(this);
+		double latitud = gps.getLatitude();
+		double longitud = gps.getLongitude();
+		Log.d("prueba",""+latitud +","+longitud);
+		
+		String slatitud = String.valueOf(latitud);
+		String slongitud = String.valueOf(longitud);
 		
 		
+		var.add("latitud"); value.add(slatitud);
+		var.add("longitud"); value.add(slongitud);
 		
-		//crea servicio y lo llama retorna arreglo de objetos en json
-		service = new Service(accionSoap,metodo,namespace,url);		
-		String jsonString = service.GetService(var, value);
+		
+		//hebra que llama al servicio
+		new Thread(new Runnable() {
+			public void run() {
+				//crea servicio y lo llama retorna arreglo de objetos en json
+				service = new Service(accionSoap,metodo,namespace,url);		
+				jsonString = service.GetService(var, value);
+			}
+		}).run();
+		
+		//Log.d("prueba",jsonString);
+		Log.d("prueba","se tiene el json");
 		
 		//se parse json y retorna arrgelo de objetos comida
 		arregloComida = GetFood(jsonString);
-
+		Log.d("prueba","se tiene el arreglo de comida");
+		
 		//para mostrar resultado
 		ScrollView sv = new ScrollView(this);
 		LinearLayout ll = new LinearLayout(this);
@@ -65,14 +89,26 @@ public class GetServiceActivity extends Activity {
 		sv.addView(ll);
 		
 		
-		for(int i = 0; i < arregloComida.size() ; i++) {
+		//prueba imagen--- ¿¿¿¿¿como obtener url????
+		Imagen imagen = new Imagen("http://foodland.cl/img/locales/65.jpeg");
+		ImageView imgview = new ImageView(this);
+		imgview.setImageBitmap(imagen.getBitmap());
+		ll.addView(imgview);
+		
+		
+		for( int i = 0; i < arregloComida.size() ; i++) {
 		    TextView tv = new TextView(this);
 		    
 		    
+		    tv.setText("Nombre: "+ arregloComida.get(i).getTituloProducto() + 
+		    		"\n Descripcion: " + arregloComida.get(i).getDescription() +
+		    		"\n	precio:	"	+ arregloComida.get(i).getPrecio()  +
+		    		"\n sector: " + arregloComida.get(i).getSubsector() + " - " + arregloComida.get(i).getSector()
+		    		);
 		    
-		    tv.setText("Nombre: "+ arregloComida.get(i).getName() + "\n Descripcion: " + arregloComida.get(i).getDescription());
 		    
 		    ll.addView(tv);
+		    ll.addView(arregloComida.get(i).getButtonCall());
 		}
 
 		this.setContentView(sv);
@@ -81,37 +117,41 @@ public class GetServiceActivity extends Activity {
 		//tv.setText(""+result);
 		
 	}
-	
-	
-	
-	
-	
-	//funcion que trasforma arreglo JSON en un arreglo de comidas
-	public ArrayList<Comida> GetFood(String jsonString){
-		
+
+	// funcion que trasforma arreglo JSON en un arreglo de comidas
+	public ArrayList<Comida> GetFood(String jsonString) {
+
 		ArrayList<Comida> arregloComida = new ArrayList<Comida>();
 		JSONArray mJsonArray;
-		
+
 		try {
 			mJsonArray = new JSONArray(jsonString);
 			JSONObject mJsonObject = new JSONObject();
 			for (int i = 0; i < mJsonArray.length(); i++) {
-			    mJsonObject = mJsonArray.getJSONObject(i);
-			    
-			    String id =			mJsonObject.getString("ID");
-			    String id_sector =	mJsonObject.getString("id_sector");
-			    String name =		mJsonObject.getString("nombre");
-			    String description =mJsonObject.getString("descripcion");
-			    arregloComida.add(new Comida(id,id_sector,name,description));
+				mJsonObject = mJsonArray.getJSONObject(i);
+
+				String idLocal = mJsonObject.getString("id_local");
+				String precio = mJsonObject.getString("precio");
+				String titulo = mJsonObject.getString("titulo");
+				String description = mJsonObject.getString("descripcion");
+				String numeroPersonas = mJsonObject.getString("numero_personas");
+				String telefono = mJsonObject.getString("telefono");
+				String local = mJsonObject.getString("local");
+				String sector = mJsonObject.getString("nombreSector");
+				String subSector = mJsonObject.getString("nombreSubsector");
+				
+				arregloComida.add(new Comida(idLocal, precio, titulo,
+						description, numeroPersonas, telefono, local,sector,subSector));
+
+				// crea boton de llamado
+				arregloComida.get(i).createCallButton(this);
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return arregloComida;
 	}
-	
-	
-	
+
 }

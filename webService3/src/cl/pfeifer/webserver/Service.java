@@ -10,7 +10,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import android.util.Log;
 
-public class Service {
+public class Service implements Runnable  {
 
 	private  String accionSoap;
 	private  String metodo;
@@ -67,6 +67,15 @@ public class Service {
 			Log.i("prueba", "error de servicio");
 			return e.getMessage();
 		}
+	}
+
+
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
