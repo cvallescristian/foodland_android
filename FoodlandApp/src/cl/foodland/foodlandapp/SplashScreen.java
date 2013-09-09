@@ -1,5 +1,6 @@
 package cl.foodland.foodlandapp;
 
+import cl.foodland.foodlandapp.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

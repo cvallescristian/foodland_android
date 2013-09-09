@@ -1,28 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cl.foodland.foodlandapp"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="5"
+        android:targetSdkVersion="10" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
 		android:theme="@android:style/Theme.NoTitleBar">
+		
         <!-- actividades van aca -->
-        
-        <activity android:name="cl.foodland.foodlandapp.MainActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        
+
         
         <activity
             android:name="cl.foodland.foodlandapp.SplashScreen"
@@ -34,10 +31,21 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="cl.foodland.foodlandapp.MainActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
         
+        <activity android:name="cl.foodland.webserver.ListFoodActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
         
+        <activity android:name="cl.foodland.foodlandapp.ProductActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
         
         
     </application>
-
 </manifest>
