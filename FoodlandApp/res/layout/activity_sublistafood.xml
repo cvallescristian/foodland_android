@@ -8,15 +8,21 @@
    		android:contentDescription="comida"
    		android:layout_width="wrap_content"
    		android:layout_height="wrap_content"
-		android:paddingRight="15dp"
-		android:paddingTop="10dp" />
+   		android:scaleType="fitCenter"
+   		android:layout_centerHorizontal="true"
+		android:background="@drawable/roundcorners"  />
+	
 	<TextView android:id="@+id/nombrecomida"
-		android:textSize="14sp" 
-		android:textStyle="bold" 
-		android:textColor="#FFFF00" 
+		android:textSize="30sp" 
+		android:textStyle="bold"
+		android:textAllCaps="true"
+		android:textColor="#747474"
+		android:layout_centerHorizontal="true"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/fotocomida"/>
+		android:layout_below="@id/fotocomida"/>
+</RelativeLayout>
+	<!-- 
 	<TextView android:id="@+id/descripcion"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
@@ -30,7 +36,8 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@id/descripcion"
 		android:layout_toRightOf="@id/fotocomida" />
-</RelativeLayout>
+		 -->
+
 
 
 <!-- <?xml version="1.0" encoding="utf-8"?>

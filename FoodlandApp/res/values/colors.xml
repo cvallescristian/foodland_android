@@ -3,4 +3,6 @@
     <color
         name="black"
         >#000000</color>
+    <color name="fondogris">#F5F5F5</color>
+    <color name="naranjo">#FAAE41</color>
 </resources>

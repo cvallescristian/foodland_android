@@ -2,11 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" 
 	android:layout_width="fill_parent"
- 	android:layout_height="fill_parent">
+ 	android:layout_height="fill_parent"
+ 	android:background="@color/fondogris">
+ 	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/black100" >
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp" >
+
+            <ImageView
+                android:id="@+id/titlelogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:padding="1dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/foodlandlogo"
+                android:onClick="irArriba" />
+            
+    
+
+		</RelativeLayout>
+
+        
+    </RelativeLayout>
+
+    
 	
 	 <ListView 
 	 	android:layout_height="wrap_content"
-	 	android:layout_width="fill_parent" android:id="@+id/listafood_main"/>
+	 	android:layout_width="fill_parent" android:id="@+id/listafood_main"
+		android:divider="@android:color/transparent"
+  android:dividerHeight="40.0sp"/>
 </LinearLayout>
 
 

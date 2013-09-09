@@ -40,31 +40,20 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="86dp" >
-
-        <!-- This is where you add buttons. You can make them "fill_parent". -->
+        
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="583dp" >
 
-        <Button
-            android:id="@+id/button2"
+        <ProgressBar
+            android:id="@+id/my_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/button1"
-            android:layout_below="@+id/button1"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/busq_manual" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="47dp"
-            android:background="@drawable/faceb_login"
-            android:onClick="buttonClick" />
     </RelativeLayout>
 
 </LinearLayout>
