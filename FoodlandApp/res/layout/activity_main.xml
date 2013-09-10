@@ -55,7 +55,8 @@
             android:layout_alignLeft="@+id/button1"
             android:layout_below="@+id/button1"
             android:layout_marginTop="10dp"
-            android:background="@drawable/busq_manual" />
+            android:background="@drawable/boton2"
+            android:onClick="buttonChoose" />
 
         <Button
             android:id="@+id/button1"
@@ -63,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="47dp"
-            android:background="@drawable/faceb_login"
-            android:onClick="buttonClick" />
+            android:background="@drawable/boton1"
+            android:onClick="button1Click" />
     </RelativeLayout>
 
 </LinearLayout>

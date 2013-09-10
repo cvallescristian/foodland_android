@@ -1,7 +1,5 @@
 package cl.foodland.webserver;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -9,89 +7,92 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cl.foodland.foodlandapp.MainActivity;
 import cl.foodland.foodlandapp.ProductActivity;
 import cl.foodland.foodlandapp.R;
-import cl.foodland.foodlandapp.SplashScreen;
-import cl.foodland.foodlandapp.R.id;
-import cl.foodland.foodlandapp.R.layout;
-import cl.foodland.webserver.Comida;
+import cl.foodland.webserver.ListFoodActivity.ListaBaseAdapter;
+import cl.foodland.webserver.ListFoodActivity.ListaBaseAdapter.ViewHolder;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.Bitmap.Config;
+import android.graphics.PorterDuff.Mode;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class ListFoodActivity extends Activity {
+public class ProductBySubsectorActivity extends Activity {
 
-	/*
-	 * este modo es pensado para reducir tiempo en las pruebas siempre va a
-	 * mostrar la consulta de plan - valparaiso no necesita ni gps ni coneccion
-	 * a intenetvariable esta en las clases ListfoodActivity y comida
-	 */
-	Boolean MODE_OFFLINE = false;
+	
+	
+	private static final String accionSoap_getProductById = "http://10.10.5.179/foodland_test2/service.php/getProductbyIdSubsector";
+	private static final String metodo_getProductById = "getProductbyIdSubsector";
 
-	Service service;
-
-	private static final String accionSoap = "http://10.10.5.179/foodland_test2/service.php/getproductbygps";
-	private static final String metodo = "getproductbygps";
-	private static final String namespace = "10.10.5.179/foodland_test2";
+	private static final String namespace = "localhost/foodland_test2";
 	private static final String url = "http://10.10.5.179/foodland_test2/service.php";
 
-	// parametros webserver
 	ArrayList<String> var = new ArrayList();
 	ArrayList<String> value = new ArrayList();
 
-	// string respuesta con los productos
+	Service serviceGetProduct;
+	TextView tv;
 	String jsonString;
 
+	ArrayList<Comida> arregloComida;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listafood);
 
-		// *********************
-		// Obtiene comida del servidor
-		// ***********************
-		final ArrayList<Comida> arregloComida;
+		
+		Bundle bundle = getIntent().getExtras();
 
-		// obtiene json dependiendo del modo
-		if (MODE_OFFLINE) {
-			Imagen.setContext(this); // para cargar imagenes de la carpeta
-										// Assets
-			setResultQueryOffline();
-		} else
-			setResultQueryOnline();
+		String idSubSector = bundle.getString("IdSubSector");
 
-		// Log.d("prueba",jsonString);
+		var.add("subsector");
+		value.add(idSubSector);
+		new Thread(new Runnable() {
+			public void run() {
+				// crea servicio y lo llama retorna arreglo de objetos
+				// en json
+				serviceGetProduct = new Service(accionSoap_getProductById,
+						metodo_getProductById, namespace, url);
+				jsonString = serviceGetProduct.GetService(var, value);
+			}
+		}).run();
 
-		// se parse json y retorna arrgelo de objetos comida
+		Log.d("prueba",jsonString);
+		// se vacian listas para siguiente consulta
+		var.clear();
+		value.clear();
+
 		arregloComida = GetFood(jsonString);
 		Log.d("prueba", "se tiene el arreglo de comida");
+
 
 		/*
 		 * Ingresa arreglo de comida a la vista vista es click listener para
@@ -111,7 +112,7 @@ public class ListFoodActivity extends Activity {
 				Object o = lista.getItemAtPosition(position);
 				Comida obj_comida = (Comida) o;
 
-				Intent i = new Intent(ListFoodActivity.this,
+				Intent i = new Intent(ProductBySubsectorActivity.this,
 						ProductActivity.class);
 				i.putExtra("Comida", obj_comida);
 
@@ -120,52 +121,18 @@ public class ListFoodActivity extends Activity {
 		});
 	}
 
-	// obtiene json modo offline
-	public void setResultQueryOffline() {
-		Log.d("prueba", "offline");
-		try {
-			// get input stream for text
-			InputStream is = getAssets().open("plan-valparaiso.txt");
-			// check size
-			int size = is.available();
-			// create buffer for IO
-			byte[] buffer = new byte[size];
-			// get data to buffer
-			is.read(buffer);
-			// close stream
-			is.close();
-			// set result to TextView
-			jsonString = new String(buffer);
-		} catch (IOException ex) {
-		}
+	//destruye arreglo de comida pause
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+	    if ((keyCode == KeyEvent.KEYCODE_BACK))
+	    {
+	    	arregloComida.clear();
+	    	
+	        finish();
+	    }
+	    return super.onKeyDown(keyCode, event);
 	}
-
-	// obtienen Json modo online
-	public void setResultQueryOnline() {
-		Log.d("prueba", "online");
-		// GPS
-		GPSTracker gps = new GPSTracker(this);
-		double latitud = gps.getLatitude();
-		double longitud = gps.getLongitude();
-		Log.d("prueba", "" + latitud + "," + longitud);
-
-		String slatitud = String.valueOf(latitud);
-		String slongitud = String.valueOf(longitud);
-
-		var.add("latitud");
-		value.add(slatitud);
-		var.add("longitud");
-		value.add(slongitud);
-
-		// hebra que llama al servicio
-		new Thread(new Runnable() {
-			public void run() {
-				// crea servicio y lo llama retorna arreglo de objetos en json
-				service = new Service(accionSoap, metodo, namespace, url);
-				jsonString = service.GetService(var, value);
-			}
-		}).run();
-	}
+		
 
 	// funcion que trasforma arreglo JSON en un arreglo de comidas
 	public ArrayList<Comida> GetFood(String jsonString) {
@@ -173,6 +140,7 @@ public class ListFoodActivity extends Activity {
 		ArrayList<Comida> arregloComida = new ArrayList<Comida>();
 		JSONArray mJsonArray;
 
+		
 		// caso de que se retorne un json vacio
 		if (jsonString == "[]") {
 			arregloComida = null;
@@ -198,6 +166,11 @@ public class ListFoodActivity extends Activity {
 					arregloComida.add(new Comida(idProducto, idLocal, precio,
 							titulo, description, numeroPersonas, telefono,
 							local, sector, subSector));
+
+					// crea boton de llamado
+					//arregloComida.get(i).createCallButton(this);
+					//arregloComida.get(i).createImageView(this);
+
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -206,7 +179,6 @@ public class ListFoodActivity extends Activity {
 		}
 		return arregloComida;
 	}
-	
 	
 	
 	public class ListaBaseAdapter extends BaseAdapter {
@@ -325,7 +297,7 @@ public class ListFoodActivity extends Activity {
 			
 			
 			class BitmapTask extends AsyncTask<Object, Void, ViewHolder> {
-			    private ProgressDialog dialog = new ProgressDialog(ListFoodActivity.this);
+			    private ProgressDialog dialog = new ProgressDialog(ProductBySubsectorActivity.this);
 
 			    protected ViewHolder doInBackground(Object... params) {
 			    	ViewHolder v = (ViewHolder) params[0];
@@ -355,4 +327,5 @@ public class ListFoodActivity extends Activity {
 		}
 
 	}
+
 }

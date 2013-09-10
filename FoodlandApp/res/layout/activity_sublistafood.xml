@@ -3,23 +3,30 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+	android:layout_height="fill_parent"
+	android:background="@color/fondogris"
+	android:paddingBottom="40dp">
 	<ImageView 
    		android:id="@+id/fotocomida"
    		android:contentDescription="comida"
-   		android:layout_width="fill_parent"
+   		android:layout_width="wrap_content"
    		android:layout_height="wrap_content"
-		android:paddingRight="15dp"
-		android:paddingTop="10dp" 
-		android:layout_centerInParent="true"/>
+		android:paddingTop="10dp"
+		android:scaleType="fitCenter"
+		android:layout_centerInParent="true"
+		android:layout_centerHorizontal="true"/>
+	<!-- android:layout_width="fill_parent" -->
 	
 	<TextView android:id="@+id/nombrecomida"
-		android:textSize="14sp" 
-		android:textStyle="bold" 
-		android:textColor="#FFFF00" 
-		android:layout_width="fill_parent" 
+		android:textSize="30sp" 
+		android:textStyle="bold"
+		android:textColor="#747474"
+		android:paddingTop="80dp"
+		android:layout_centerHorizontal="true"
+		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
-		android:layout_below="@id/fotocomida"/>
+		android:layout_below="@id/fotocomida"
+		style="@style/sombratexto"/>
 </RelativeLayout>
 
 
@@ -28,6 +35,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    
+    
     
     En el textview nombrecomida, para que este dato quede al lado de la foto
     android:layout_toRightOf="@id/fotocomida"

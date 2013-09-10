@@ -27,7 +27,7 @@ public class Comida implements Parcelable {
 	 * siempre va a mostrar la consulta de plan - valparaiso,
 	 * no necesita ni gps ni coneccion a intenet,
 	 * variable esta en las clases ListfoodActivity y comida*/
-	private Boolean MODE_OFFLINE = true; 
+	private Boolean MODE_OFFLINE = false; 
 	
 	
 	private String idProducto;

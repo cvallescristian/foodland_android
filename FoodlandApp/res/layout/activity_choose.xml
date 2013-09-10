@@ -1,54 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/obtenerProductos"
-        android:layout_width="102dp"
-        android:layout_height="34dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="182dp"
-        android:layout_toRightOf="@+id/tvSubsector"
-        android:text="Button" />
-
-    <Spinner
-        android:id="@+id/sector_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_above="@+id/tvSubsector"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="34dp"
-        android:layout_weight="0.00" />
-
-    <TextView
-        android:id="@+id/tvSubsector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/subsector_spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="21dp"
-        android:layout_marginLeft="16dp"
-        android:layout_weight="0.00"
-        android:text="Subsector" />
-
-    <Spinner
-        android:id="@+id/subsector_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_above="@+id/obtenerProductos"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="48dp" />
-
-    <TextView
-        android:id="@+id/tvSector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvSubsector"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:layout_weight="0.00"
-        android:text="Sector" />
-
-</RelativeLayout>
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="30dp">
+ 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Selecciona tu ubicacion"
+                android:id="@+id/textView"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"/>
+ 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Ciudad: "
+                android:id="@+id/textView2"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="20dp"
+                />
+ 
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sector_spinner"
+                android:layout_gravity="center"/>
+ 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Sector de la ciudad: "
+                android:id="@+id/textView2"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+ 
+        <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/subsector_spinner"/>
+ 
+        <Button
+                android:id="@+id/obtenerProductos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Escoger ubicación"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="#ffff200f"
+                android:padding="20dp"
+                />
+ 
+    </LinearLayout>
+</LinearLayout>

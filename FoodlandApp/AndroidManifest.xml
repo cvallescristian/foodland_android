@@ -45,6 +45,14 @@
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name="cl.foodland.webserver.ChooseServiceActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="cl.foodland.webserver.ProductBySubsectorActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
         
         
     </application>
